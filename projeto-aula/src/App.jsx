@@ -1,61 +1,25 @@
-function App() {
+import { useState } from "react";
+import ItemCardapio from "./ItemCardapio";
+import "./App.css";
+
+export default function App() {
+  const [total, setTotal] = useState(0);
+
+  function adicionarItem() {
+    setTotal(total + 1);
+  }
+
   return (
-    <div
-      style={{
-        backgroundColor: "#f5f5f5",
-        minHeight: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        fontFamily: "Arial",
-      }}
-    >
-      <div
-        style={{
-          backgroundColor: "white",
-          padding: "30px",
-          borderRadius: "15px",
-          width: "350px",
-          boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
-        }}
-      >
-        <h1
-          style={{
-            textAlign: "center",
-            color: "#d62828",
-            marginBottom: "25px",
-          }}
-        >
-          🍔 Cardápio da Lanchonete
-        </h1>
+    <div className="container">
+      <h1>🍔 Cardápio da Lanchonete</h1>
 
-        <div style={{ marginBottom: "15px" }}>
-          <h2>🍔 X-Burguer</h2>
-          <p>Preço: R$ 18,00</p>
-        </div>
+      <h2>Total de itens no pedido: {total}</h2>
 
-        <div style={{ marginBottom: "15px" }}>
-          <h2>🥗 X-Salada</h2>
-          <p>Preço: R$ 20,00</p>
-        </div>
-
-        <div style={{ marginBottom: "15px" }}>
-          <h2>🍟 Batata Frita</h2>
-          <p>Preço: R$ 12,00</p>
-        </div>
-
-        <div style={{ marginBottom: "15px" }}>
-          <h2>🥤 Refrigerante</h2>
-          <p>Preço: R$ 7,00</p>
-        </div>
-
-        <div>
-          <h2>🍨 Milk Shake</h2>
-          <p>Preço: R$ 15,00</p>
-        </div>
-      </div>
+      <ItemCardapio nome="X-Burguer" preco="12,00" onAdd={adicionarItem} />
+      <ItemCardapio nome="X-Salada" preco="14,00" onAdd={adicionarItem} />
+      <ItemCardapio nome="Hot Dog" preco="8,00" onAdd={adicionarItem} />
+      <ItemCardapio nome="Batata Frita" preco="10,00" onAdd={adicionarItem} />
+      <ItemCardapio nome="Refrigerante" preco="5,00" onAdd={adicionarItem} />
     </div>
-  )
+  );
 }
-
-export default App
